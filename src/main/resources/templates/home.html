@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+    body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
+    .w3-row-padding img {margin-bottom: 12px}
+    /* Set the width of the sidenav to 120px */
+    .w3-sidenav {width: 120px;background: #222;}
+    /* Add a left margin to the "page content" that matches the width of the sidenav (120px) */
+    #main {margin-left: 120px}
+    /* Remove margins from "page content" on small screens */
+    @media only screen and (max-width: 600px) {#main {margin-left: 0}}
+</style>
+<body class="w3-black">
+<h1>Welcome to the Purchases List!</h1>
+<br>
+
+<h3>Sort By:</h3>
+<a href="/">All</a>
+<a href="/?category=Furniture">Furniture</a>
+<a href="/?category=Alcohol">Alcohol</a>
+<a href="/?category=Toiletries">Toiletries</a>
+<a href="/?category=Shoes">Shoes</a>
+<a href="/?category=Food">Food</a>
+<a href="/?category=Jewelry">Jewelry</a>
+<br>
+<br>
+<br>
+
+<table style="border: groove">
+    <tr align="left">
+        <th>Name</th>
+        <th>Email</th>
+        <th>Category</th>
+        <th align="center">Credit Card</th>
+        <th>CVV</th>
+        <th align="center">Date</th>
+    </tr>
+
+    {{#purchases}}
+    <tr>
+        {{#customer}}
+        <td>{{name}}</td>
+        <td>{{email}}</td>
+        {{/customer}}
+        <td>{{category}}</td>
+        <td>{{creditCard}}</td>
+        <td>{{cvv}}</td>
+        <td>{{date}}</td>
+    </tr>
+    {{/purchases}}
+
+</table>
+
+
+</body>
+</html>
