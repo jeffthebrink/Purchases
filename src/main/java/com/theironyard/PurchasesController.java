@@ -5,9 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
 import javax.annotation.PostConstruct;
-import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.List;
@@ -24,7 +22,6 @@ public class PurchasesController {
 
     @PostConstruct
     public void init() {
-
         if (customers.count() == 0) {
             File f = new File("customers.csv");
             try (Scanner scanner = new Scanner(f)) {
@@ -59,15 +56,12 @@ public class PurchasesController {
 
     @RequestMapping(path = "/", method = RequestMethod.GET)
     public String home(Model model, String category) {
-
         List<Purchase> purchaseList;
         if (category != null) {
             purchaseList = purchases.findByCategory(category);
         } else {
             purchaseList = (List<Purchase>) purchases.findAll();
         }
-
-
         model.addAttribute("purchases", purchaseList);
         return "home";
     }
